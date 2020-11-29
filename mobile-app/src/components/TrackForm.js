@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 import { Context as LocationContext } from '../context/locationContext'
+import useSaveTrack from '../hooks/useSaveTrack'
 
 const TrackForm = () => {
     const { 
@@ -10,6 +11,7 @@ const TrackForm = () => {
         stopRecording 
     } = useContext(LocationContext)
 
+    const [saveTrack] = useSaveTrack() 
     return (
         <View style={styles.container}>
             <TextInput placeholder='Enter route name' style={styles.input} onChangeText={changeName} value={name}/>
@@ -19,7 +21,7 @@ const TrackForm = () => {
             }
             {
                 !recording && locations.length 
-                ? <Button title='Save recording' /> 
+                ? <Button title='Save recording' onPress={saveTrack} /> 
                 : null
             }
         </View>
