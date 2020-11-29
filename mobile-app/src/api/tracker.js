@@ -3,5 +3,5 @@ const { default: Axios } = require("axios")
 import axios from 'axios'
 
 export default axios.create({
-    baseURL: 'http://e14cb546e393.ngrok.io'
+    baseURL: 'http://8e604678c022.ngrok.io'
 })
