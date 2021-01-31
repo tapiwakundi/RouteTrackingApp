@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
-import AppText from './AppText';
+import AppText from './texts/AppText';
 import colors from '../config/colors';
 
 export default function AppLink({ text, onPress }) {

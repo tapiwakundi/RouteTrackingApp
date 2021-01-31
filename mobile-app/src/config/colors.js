@@ -1,15 +1,13 @@
 export default {
-    primary: '#ff0066',
-    secondary: '#4B6162',
-    gold: '#edba00',
+    //Main colors
+    green: '#AFEC9D',
+    purple: '#813CFB',
+    lightblue: '#C1E8FE',
+    magenta: "#FA3A74",
 
+
+    //Default
     black: '#000',
-    gray: '#636363',
-    lightgray: '#e3e3e3',
-    mediumgray: '#D2D2D2',
-    white: '#fff',
-    light: 'gainsboro',
-    medium: 'gray',
-    dark: '#303031',
-    danger: 'tomato'
+    gray: '#c9c9c9',
+    white: '#ffffff'
 }
