@@ -4,6 +4,7 @@ const User = require('../models/User')
 const Track = require('../models/Track')
 const jwt = require('jsonwebtoken')
 const requireAuth = require('../middlewares/requireAuth')
+const TrackAnalysis = require('../trackAnalysis/TrackAnalysis')
 
 
 const router = express.Router()
@@ -22,9 +23,19 @@ router.post('/tracks', async(req, res) => {
 
     if(!name || !locations) return res.status(422).send({error: 'you must provide name an location'})
 
+    const anlysis = new TrackAnalysis(locations)
+
     try {
-        const track = new Track ({name, locations, userId: req.user._id})
+        const track = new Track ({name, 
+                                locations, 
+                                userId: req.user._id, 
+                                time: anlysis.time,
+                                distance: anlysis.distance,
+                                averagePace: anlysis.averagePace,
+                                averageSpeed: anlysis.averageSpeed})
+
         await track.save()
+        console.log(track);
         res.send(track)
     } catch (error) {
         res.status(422).send({error: error.message})

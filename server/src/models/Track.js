@@ -23,7 +23,20 @@ const trackSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    locations: [pointSchema]
+    locations: [pointSchema],
+    averageSpeed: {
+        type: Number
+    },
+    averagePace: {
+        type: Number
+    },
+    distance: {
+        type: Number
+    },
+    time: {
+        type: Number
+    }
+
     
 });
 
