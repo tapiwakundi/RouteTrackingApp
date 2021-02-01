@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useContext } from 'react'
 
 const instance = axios.create({
-    baseURL: 'http://7e8538511f01.ngrok.io'
+    baseURL: 'https://b98e6835d4d1.ngrok.io'
 })
 
 instance.interceptors.request.use(
