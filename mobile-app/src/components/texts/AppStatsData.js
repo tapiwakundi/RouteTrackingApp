@@ -8,7 +8,7 @@ export default function AppStatsData({ children, otherStyles = null }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "600",
     color: colors.black,
   },

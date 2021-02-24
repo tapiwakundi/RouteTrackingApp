@@ -1,46 +1,43 @@
-import React, { useContext, useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
-import {getDate} from '../utils/getDate'
-import {Context as AuthContext} from '../context/authContext'
-import { ActivityIndicator } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
-import AppUserName from '../components/texts/AppUserName'
-import Date from '../components/Date'
-import AppHeadline from '../components/texts/AppHeadline'
-import StatsCard from '../components/cards/StatsCard'
-import colors from '../config/colors'
-import DashboardComponents from './ScreenComponents/DashboardComponents'
+import React, { useContext, useEffect } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import { Context as AuthContext } from "../context/authContext";
+import { ActivityIndicator } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import DashboardComponents from "./ScreenComponents/DashboardComponents";
 
-export default DashboardScreen = () => {
+export default DashboardScreen = (props) => {
+  const {
+    setUser,
+    state: { user },
+  } = useContext(AuthContext);
 
-    const {setUser, state: {user}} = useContext(AuthContext)
+  useEffect(() => {
+    setUser();
+  }, []);
 
-
-    useEffect(() => {
-        setUser()
-    }, [])
-
-    if (!user) {
-        return <ActivityIndicator />
-    } else {
-        return (
-            <ScrollView contentContainerStyle={styles.container}>
-
-              <DashboardComponents name={user.firstName} />
-            </ScrollView>
-        )
-    }
-}
-
+  if (!user) {
+    return <ActivityIndicator />;
+  } else {
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        <DashboardComponents
+          name={user.firstName}
+          navigation={props.navigation}
+        />
+      </ScrollView>
+    );
+  }
+};
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: "12%"
-    }
-})
+  container: {
+    paddingTop: "12%",
+  },
+});
 
-DashboardScreen.navigationOptions = {
-    tabBarIcon: <FontAwesome name='home' size={25} />
-}
-
+DashboardScreen.navigationOptions = () => {
+  return {
+    headerShown: false,
+  };
+};

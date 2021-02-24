@@ -37,7 +37,7 @@ export default RunCard = ({ _id }) => {
         <View style={styles.centered}>
           <AppStatsLabel>Time</AppStatsLabel>
           <AppStatsData>
-            {track.time ? `${track.time.toFixed(2)} min` : 0}
+            {track.time ? `${track.time.toFixed(2)} sec` : 0}
           </AppStatsData>
         </View>
       </View>
@@ -45,12 +45,16 @@ export default RunCard = ({ _id }) => {
       <View style={styles.statswrapper}>
         <View style={styles.centered}>
           <AppStatsLabel>Average Speed</AppStatsLabel>
-          <AppStatsData>2km</AppStatsData>
+          <AppStatsData>
+            {track.averageSpeed ? `${track.averageSpeed.toFixed(2)} km/min` : 0}
+          </AppStatsData>
         </View>
         <View style={{ marginHorizontal: 20 }} />
         <View style={styles.centered}>
           <AppStatsLabel>Average Pace</AppStatsLabel>
-          <AppStatsData>2km</AppStatsData>
+          <AppStatsData>
+            {track.averagePace ? `${track.averagePace.toFixed(2)} min/km` : 0}
+          </AppStatsData>
         </View>
       </View>
 
